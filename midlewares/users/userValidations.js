@@ -1,5 +1,5 @@
 // External Imports
-const { check, validationResult } = require("express-validators");
+const { check, validationResult } = require("express-validator");
 const createError = require("http-errors");
 const path = require("path");
 const { unlink } = require("fs");

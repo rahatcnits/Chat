@@ -5,11 +5,15 @@ const router = express.Router();
 const { getUsers } = require("../controller/usersController");
 const decorateHtmlResponse = require("../midlewares/commons/decorateHtmlResponse");
 const avatarUpload = require("../midlewares/users/avatarUpload");
+const {
+  addUserValidators,
+  addUserValidationHandler,
+} = require("../midlewares/users/userValidations");
 
 // users page
 router.get("/", decorateHtmlResponse("Users"), getUsers);
 
 // add user
-router.post("/", avatarUpload);
+router.post("/", addUserValidators, addUserValidationHandler, avatarUpload);
 
 module.exports = router;
